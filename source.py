@@ -60,6 +60,41 @@ def tab1():
 
         button_back = Button(root, text='Back', command=back, borderwidth=2)
         button_back.grid(row=9, columnspan=1, column=0, padx=80, pady=5)
+    def tab3():
+
+        label1.destroy()
+        button_imc.destroy()
+        button_calories.destroy()
+
+        age_label = Label(root, text='Idade')
+        age_label.grid(row=1, columnspan=1, column=0, padx=80, pady=5)
+        age_button = Entry(root, text='Idade', borderwidth=2)
+        age_button.grid(row=2, columnspan=1, column=0, padx=80, pady=5)
+
+        weight_label = Label(root, text="Peso: (ex: 69.2)")
+        weight_label.grid(row=3, column=0, columnspan=1, padx=80, pady=5)
+        weight_button = Entry(root, text="Weight", borderwidth=2)
+        weight_button.grid(row=4, column=0, columnspan=1, padx=80, pady=5)
+
+        sex_label = Label(root, text="Escolha seu sexo:")
+        sex_label.grid(row=5, columnspan=1, column=0, padx=80, pady=5)
+        sex_male_button = Button(root, text='Homem', borderwidth=2)
+        sex_male_button.grid(row=6, column=0, pady=5, padx=80, columnspan=1)
+        sex_woman_button = Button(root, text='Mulher', borderwidth=2)
+        sex_woman_button.grid(row=7, column=0, pady=5, columnspan=1, padx=80)
+
+        def back():
+            age_label.destroy()
+            weight_label.destroy()
+            age_button.destroy()
+            weight_button.destroy()
+            sex_label.destroy()
+            sex_male_button.destroy()
+            sex_woman_button.destroy()
+            tab1()
+
+        button_back = Button(root, text='Back', command=back, borderwidth=2)
+        button_back.grid(row=9, columnspan=1, column=0, padx=80, pady=5)
 
     label1 = Label(root, text='Sejam Bem Vindos! \n Escolha uma das opções:')
     label1.grid(row=1, columnspan=1, column=0, padx=80, pady=20)
@@ -67,7 +102,7 @@ def tab1():
     button_imc = Button(root, text='Calcular IMC', borderwidth=2, command=tab2)
     button_imc.grid(row=2, column=0, pady=10, padx=60, columnspan=1)
 
-    button_calories = Button(root, text='Calcular Calorias',borderwidth=2)
+    button_calories = Button(root, text='Calcular Calorias',borderwidth=2, command=tab3)
     button_calories.grid(row=3, column=0, columnspan=1, pady=10, padx=60)
 
 
