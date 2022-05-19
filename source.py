@@ -139,9 +139,10 @@ def tab1():
             result_button.destroy()
             calories_button.destroy()
             calories_label.destroy()
+            button_back.destroy()
             tab1()
 
-        button_back = Button(root, text='Back', command=back, borderwidth=2)
+        button_back = Button(root, text='Back', command=back, borderwidth=5)
         button_back.grid(row=12, columnspan=1, column=0, padx=80, pady=5)
 
     label1 = Label(root, text='Sejam Bem Vindos! \n Escolha uma das opções:')
