@@ -1,5 +1,7 @@
 from tkinter import *
 import tkinter as tk
+from tkinter import StringVar
+from unittest import result
 
 root = Tk()
 root.minsize(height=250, width=250)
@@ -18,33 +20,63 @@ def tab1():
                 a = float(height1.get())
                 b = a * a
                 result = float(weight1.get()) / b
+                if result <= 18.5:
+                    classification1.set(f'Baixo Peso')
+                elif 18.6 <= result <= 24.9:
+                    classification1.set(f'Peso Normal')
+                elif 25 <= result <= 29.9:
+                    classification1.set(f'Sobre Peso')
+                elif 30 < result < 34.9:
+                    classification1.set(f'Obesidade grau I')
+                elif 35 < result < 39.9:
+                    classification1.set(f'Obesidade grau II')
+                else:
+                    classification1.set(f'Obesidade grau III')
+
             except Exception as ex:
                 print(ex)
                 result = 'error'
             imc1.set(f'{result:3.2f}')
+
+
+
+
 
         # --- main ---
 
         height1 = tk.StringVar()
         weight1 = tk.StringVar()
         imc1 = tk.StringVar()
+        classification1 = tk.StringVar()
+
+
 
         height = Label(root, text="Altura: (ex: 1.70)")
         height.grid(row=0, column=0, columnspan=1)
         weight = Label(root, text="Peso: (ex: 69.2)")
         weight.grid(row=2, column=0, columnspan=1)
         label_imc = Label(root, text="Seu IMC:")
-        label_imc.grid(row=4, column=0, columnspan=1)
+        label_imc.grid(row=5, column=0, columnspan=1)
 
         height_variable = Entry(root, textvariable=height1, borderwidth=5)
         height_variable.grid(row=1, column=0, columnspan=1, padx=80)
         weight_variable = Entry(root, textvariable=weight1, borderwidth=5)
         weight_variable.grid(row=3, column=0, columnspan=1, padx=80)
-        imc_variable = Entry(root, textvariable=imc1, borderwidth=5)
-        imc_variable.grid(row=5, column=0, columnspan=1, padx=80)
+        imc_variable = Entry(root, textvariable=imc1)
+        imc_variable.grid(row=6, column=0, columnspan=1, padx=80)
+        classification_label = Label(root, text='Classificação:')
+        classification_label.grid(row=8, columnspan=1, column=0, padx=80, pady=5)
+        classification_variable = Entry(root, textvariable=classification1)
+        classification_variable.grid(row=9, column=0, columnspan=1, padx=80, pady=5)
+
+
 
         button_calculate = tk.Button(root, text="Calculate", command=generate, borderwidth=2)
-        button_calculate.grid(row=8, column=0, columnspan=1, padx=80, pady=5)
+        button_calculate.grid(row=11, column=0, columnspan=1, padx=80, pady=5)
+
+
+
+
 
         def back():
             height.destroy()
@@ -55,11 +87,12 @@ def tab1():
             imc_variable.destroy()
             button_calculate.destroy()
             button_back.destroy()
-
+            classification_variable.destroy()
+            classification_label.destroy()
             tab1()
 
         button_back = Button(root, text='Back', command=back, borderwidth=2)
-        button_back.grid(row=9, columnspan=1, column=0, padx=80, pady=5)
+        button_back.grid(row=12, columnspan=1, column=0, padx=80, pady=5)
 
     def tab3():
 
